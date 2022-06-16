@@ -87,7 +87,7 @@ while RUN == True:
     draw_tile(tilemap_surface)
 
     if animation2_time == 1000:
-        animation2_time = 0
+        animation2_time = -300
     if animation1_time > 0:
         animation1_time-=0.2
         animation_y = -(-1*animation1_time**2 + 9*animation1_time)
