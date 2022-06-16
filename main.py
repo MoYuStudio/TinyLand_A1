@@ -24,6 +24,7 @@ move_x, move_y = window.get_width()/2, window.get_height()/2
 
 # animation1 y = ax^2 + bx + c
 animation1_time = 25
+animation1_fix = True
 
 # animation2 y = sin(ax+b)*c
 animation2_time = 0
@@ -85,13 +86,19 @@ while RUN == True:
     tilemap_surface.fill((0,0,0,0))
     draw_tile(tilemap_surface)
 
-    if animation2_time == 0:
-        animation2_time = 1250
-    if animation1_time > 0 :
+    if animation2_time == 1000:
+        animation2_time = 0
+    if animation1_time > 0:
         animation1_time-=0.2
         animation_y = -(-1*animation1_time**2 + 9*animation1_time)
-    if animation1_time <= 0:
-        animation2_time-=0.05
+    if animation1_time <= 0 and animation1_fix == True:
+        animation_y-=0.5
+        if animation_y <= (math.sin(math.degrees(15)+animation2_time))*10:
+            animation_y = (math.sin(math.degrees(15)+animation2_time))*10
+            animation1_fix = False
+
+    if animation1_time <= 0 and animation1_fix == False:
+        animation2_time+=0.05
         animation_y = (math.sin(math.degrees(15)+animation2_time))*10
 
     window.blit(tilemap_surface, (0,animation_y))
