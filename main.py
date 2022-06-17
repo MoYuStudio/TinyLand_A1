@@ -107,6 +107,9 @@ while RUN == True:
     draw_ui_text('Coin '+str(coin), (window_size[0]-250,0), (255,255,255), 32, ui_surface)
 
     draw_ui_tilebar(0, building_list[1], 0, ui_surface)
+    draw_ui_tilebar(1, building_list[6], 10, ui_surface)
+    draw_ui_tilebar(2, building_list[7], 10, ui_surface)
+    draw_ui_tilebar(3, building_list[8], 30, ui_surface)
 
     window.blit(ui_surface, (0,0))
 
