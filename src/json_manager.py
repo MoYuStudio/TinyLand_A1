@@ -3,6 +3,10 @@ import os
 import json
 
 class JsonManager:
+    '''
+        Json数据管理器
+    '''
+    
     def __init__(self,path='json',read_data={}):
         self.path = path
         self.read_data = read_data
@@ -11,6 +15,9 @@ class JsonManager:
         self.read()
 
     def read(self):
+        '''
+            遍历路径 读取json数据 并存入字典
+        '''
         path_folder = os.path.split(self.path)[-1] # 获取指定文件夹名
         for parent,dirnames,filenames in os.walk(self.path): # 遍历路径 parent:父目录 dirnames:子目录 filenames:文件
             for file_name in filenames: # 遍历文件列表
@@ -27,11 +34,14 @@ class JsonManager:
         return self.read_data
 
     def write(self,data_name,write_data):
-        with open(self.path+'/'+self.write_path+'/'+data_name,'w') as f:
+        '''
+            写入json数据
+        '''
+        with open(self.path+'/'+self.write_path[data_name]+'/'+data_name+'.json','w') as f:
             dumps_data = json.dumps(write_data,indent=4,separators=(',',':'),ensure_ascii=False,skipkeys=True,sort_keys=False)
             f.write(dumps_data)
 
 if __name__ == '__main__':
-    jm = JsonManager('data/json')
+    jm = JsonManager('json')
     print(jm.read_data)
     print(jm.write_path)
