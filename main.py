@@ -1,8 +1,8 @@
 
 import src
 
-jm = src.json_manager.JsonManager('json')
+LocalsVar = locals()
 
-window = jm.read_data['window']
+jm = src.json_manager.JsonManager('json',LocalsVar)
 
-print(window)
+print(window['size'])
