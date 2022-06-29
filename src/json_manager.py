@@ -23,10 +23,9 @@ class JsonManager:
         
         return self.read_data
 
-    def write(self,write_data):
-        self.write_data = write_data
-        with open(self.path,'w') as f:
-            dumps_data = json.dumps(self.write_data,indent=4,separators=(',',':'),ensure_ascii=False,skipkeys=True,sort_keys=False)
+    def write(self,data_name,write_data):
+        with open(self.path+'/'+self.lut_data.get(data_name),'w') as f:
+            dumps_data = json.dumps(write_data,indent=4,separators=(',',':'),ensure_ascii=False,skipkeys=True,sort_keys=False)
             f.write(dumps_data)
 
 if __name__ == '__main__':

@@ -1,4 +1,5 @@
 {
     "window":"window.json",
+    "assets":"assets.json",
     "map":"map.json"
 }
