@@ -23,8 +23,6 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-
-
 while RUN == True:
     window.fill((0,0,0,0))
     
