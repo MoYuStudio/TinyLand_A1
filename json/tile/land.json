@@ -1,0 +1,22 @@
+{
+    "0":{
+        "name":"dirt",
+        "timer":0
+    },
+    "1":{
+        "name":"grass",
+        "timer":0
+    },
+    "2":{
+        "name":"sand",
+        "timer":0
+    },
+    "3":{
+        "name":"stone",
+        "timer":0
+    },
+    "4":{
+        "name":"water",
+        "timer":0
+    }
+}
