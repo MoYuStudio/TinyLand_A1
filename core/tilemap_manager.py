@@ -1,6 +1,5 @@
 
 import random
-import re
 
 import noise
 import pygame
@@ -51,13 +50,13 @@ class TilemapManager:
             for column in range(len(self.map['building'][row])): # column列
             
                 # timer
-                if self.map['timer'][row][column] == 0:
+                if self.tile_building[str(self.map['building'][row][column])]['timer'] >= 0:
                     self.map['timer'][row][column] += 1
                 if self.map['timer'][row][column] == self.tile_building[str(self.map['building'][row][column])]['timer']:
                     self.map['building'][row][column] += 1
-                print(self.map['building'])
+                    self.map['timer'][row][column] = 0
         
-        return self.map
+        # return self.map
         
     def touch(self):
         pass

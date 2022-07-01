@@ -6,22 +6,22 @@
     },
     "1":{
         "name":"farmland0",
-        "timer":10,
+        "timer":100,
         "buildable":[]
     },
     "2":{
         "name":"farmland1",
-        "timer":10,
+        "timer":100,
         "buildable":[]
     },
     "3":{
         "name":"farmland2",
-        "timer":10,
+        "timer":100,
         "buildable":[]
     },
     "4":{
         "name":"farmland3",
-        "timer":10,
+        "timer":100,
         "buildable":[]
     },
     "5":{

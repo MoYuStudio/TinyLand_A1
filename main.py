@@ -33,9 +33,11 @@ while RUN == True:
     tilemap_surface = pygame.Surface(window_size).convert_alpha()
     tilemap_surface.fill((0,0,0,0))
     
+    map_01['building'][5][7] = 1
+    
     tm = core.tilemap_manager.TilemapManager(map_01,tile_land,tile_building)
     tm.renderer(tilemap_surface)
-    map_01 = tm.timer()
+    tm.timer()
     
     window.blit(tilemap_surface, (0,0))
     
