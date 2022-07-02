@@ -52,18 +52,19 @@ class TilemapManager:
                     self.map['timer'][row][column] = 0
         
     def touch(self,build_tile):
-        for row in range(len(self.touch_rect_map)):
-            for column in range(len(self.touch_rect_map[row])):
-                touch_rect = self.touch_rect_map[row][column]
-                touch_rect.x = self.touch_rect_map[row][column].x + self.touch_rect_map[row][column].width/5
-                touch_rect.y = self.touch_rect_map[row][column].y + self.touch_rect_map[row][column].height/11
-                touch_rect.width = self.touch_rect_map[row][column].width/2
-                touch_rect.height = self.touch_rect_map[row][column].height/3
-                if pygame.Rect.collidepoint(touch_rect, pygame.mouse.get_pos()):
-                    if self.map['building'][row][column] == 0:
-                        for buildable_tile in self.tile_building[str(build_tile)]['buildable']:
-                            if self.map['land'][row][column] == buildable_tile:
-                                self.map['building'][row][column] = build_tile
+        if pygame.mouse.get_pressed()[0] == True:
+            for row in range(len(self.touch_rect_map)):
+                for column in range(len(self.touch_rect_map[row])):
+                    touch_rect = self.touch_rect_map[row][column]
+                    touch_rect.x = self.touch_rect_map[row][column].x + self.touch_rect_map[row][column].width/5
+                    touch_rect.y = self.touch_rect_map[row][column].y + self.touch_rect_map[row][column].height/11
+                    touch_rect.width = self.touch_rect_map[row][column].width/2
+                    touch_rect.height = self.touch_rect_map[row][column].height/3
+                    if pygame.Rect.collidepoint(touch_rect, pygame.mouse.get_pos()):
+                        if self.map['building'][row][column] == 0:
+                            for buildable_tile in self.tile_building[str(build_tile)]['buildable']:
+                                if self.map['land'][row][column] == buildable_tile:
+                                    self.map['building'][row][column] = build_tile
                         
 if __name__ == '__main__':
     pass
