@@ -14,10 +14,10 @@ class TilemapManager:
         
         self.assets = {
             'land':[pygame.image.load('assets/land/land'+str(i)+'.png')for i in range(0,(4+1),1)],
-            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(8+1),1)]
+            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(9+1),1)]
         }
         
-        self.pos = [0,0]
+        self.pos = [500,100]
         
         self.touch_rect_map = [[[]for x in range(len(self.map['land']))] for y in range(len(self.map['land'][0]))]
         
@@ -43,23 +43,27 @@ class TilemapManager:
                     surface.blit(self.assets[tile_list][self.map[tile_list][row][column]], tile_rect) # 绘制图片
     
     def timer(self):
-        # for key in self.tile_building:
-        #     print(self.tile_building[key]['timer'])
-        
         for row in range(len(self.map['building'])): # row行
             for column in range(len(self.map['building'][row])): # column列
-            
-                # timer
                 if self.tile_building[str(self.map['building'][row][column])]['timer'] >= 0:
                     self.map['timer'][row][column] += 1
                 if self.map['timer'][row][column] == self.tile_building[str(self.map['building'][row][column])]['timer']:
                     self.map['building'][row][column] += 1
                     self.map['timer'][row][column] = 0
         
-        # return self.map
-        
-    def touch(self):
-        pass
-    
+    def touch(self,build_tile):
+        for row in range(len(self.touch_rect_map)):
+            for column in range(len(self.touch_rect_map[row])):
+                touch_rect = self.touch_rect_map[row][column]
+                touch_rect.x = self.touch_rect_map[row][column].x + self.touch_rect_map[row][column].width/5
+                touch_rect.y = self.touch_rect_map[row][column].y + self.touch_rect_map[row][column].height/11
+                touch_rect.width = self.touch_rect_map[row][column].width/2
+                touch_rect.height = self.touch_rect_map[row][column].height/3
+                if pygame.Rect.collidepoint(touch_rect, pygame.mouse.get_pos()):
+                    if self.map['building'][row][column] == 0:
+                        for buildable_tile in self.tile_building[str(build_tile)]['buildable']:
+                            if self.map['land'][row][column] == buildable_tile:
+                                self.map['building'][row][column] = build_tile
+                        
 if __name__ == '__main__':
     pass
