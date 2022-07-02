@@ -23,7 +23,7 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-map_01['building'][5][7] = 1
+map_01['building'][5][7] = 13
 
 tm = core.tilemap_manager.TilemapManager(map_01,tile_land,tile_building)
 
@@ -34,15 +34,17 @@ while RUN == True:
         if event.type == pygame.QUIT:
             RUN = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            tm.touch(11)
+            tm.touch(12)
             
-    tilemap_surface = pygame.Surface(window_size).convert_alpha()
+    tilemap_surface = pygame.Surface((320,180)).convert_alpha()
     tilemap_surface.fill((0,0,0,0))
     
     
     tm.renderer(tilemap_surface)
     tm.timer()
     
+    
+    tilemap_surface = pygame.transform.scale(tilemap_surface,window_size)
     window.blit(tilemap_surface, (0,0))
     
     pygame.display.update()

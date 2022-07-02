@@ -10,14 +10,14 @@ class TilemapManager:
         self.tile_land = tile_land
         self.tile_building = tile_building
         
-        self.tile_width = 64
+        self.tile_width = 16
         
         self.assets = {
-            'land':[pygame.image.load('assets/land/land'+str(i)+'.png')for i in range(0,(4+1),1)],
-            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(11+1),1)]
+            'land':[pygame.image.load('assets/tile/tile'+str(i)+'.png')for i in range(0,(4+1),1)],
+            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(13+1),1)]
         }
         
-        self.pos = [500,100]
+        self.pos = [100,0]
         
         self.touch_rect_map = [[[]for x in range(len(self.map['land']))] for y in range(len(self.map['land'][0]))]
         
