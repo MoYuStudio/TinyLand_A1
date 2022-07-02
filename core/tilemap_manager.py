@@ -14,7 +14,7 @@ class TilemapManager:
         
         self.assets = {
             'land':[pygame.image.load('assets/land/land'+str(i)+'.png')for i in range(0,(4+1),1)],
-            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(9+1),1)]
+            'building':[pygame.image.load('assets/building/building'+str(i)+'.png')for i in range(0,(11+1),1)]
         }
         
         self.pos = [500,100]

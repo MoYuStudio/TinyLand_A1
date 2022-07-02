@@ -13,7 +13,7 @@ pygame.display.init()
 pygame.font.init()
 pygame.mixer.init()
 
-font_list = [pygame.font.Font('assets/font/LockClock.ttf', size)for size in range(0,(64+1),1)]
+# font_list = [pygame.font.Font('assets/font/LockClock.ttf', size)for size in range(0,(64+1),1)]
 
 window_size = (1280,720)
 window = pygame.display.set_mode(window_size) # pygame.RESIZABLE
@@ -34,7 +34,7 @@ while RUN == True:
         if event.type == pygame.QUIT:
             RUN = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            tm.touch(9)
+            tm.touch(11)
             
     tilemap_surface = pygame.Surface(window_size).convert_alpha()
     tilemap_surface.fill((0,0,0,0))

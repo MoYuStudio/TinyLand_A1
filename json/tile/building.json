@@ -53,5 +53,10 @@
         "name":"f",
         "timer":0,
         "buildable":[0,1]
+    },
+    "11":{
+        "name":"f",
+        "timer":0,
+        "buildable":[0,1]
     }
 }
