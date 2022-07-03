@@ -70,7 +70,6 @@ class TilemapManager:
                     pos_in_mask = (pos[0]-touch_rect.x),(pos[1]-touch_rect.y)
                     touching = touch_rect.collidepoint(*pos) and tile_mask.get_at(pos_in_mask)
                     
-                    
                     # self.map['1'][row][column] = 14
                     
                     if pygame.mouse.get_pressed()[0] == True:
