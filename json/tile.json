@@ -1,22 +1,65 @@
 {
     "0":{
-        "name":"dirt",
-        "timer":0
+        "name":"air"
     },
     "1":{
-        "name":"grass",
-        "timer":0
+        "name":"grass"
     },
     "2":{
-        "name":"sand",
-        "timer":0
+        "name":"dirt"
     },
     "3":{
-        "name":"stone",
-        "timer":0
+        "name":"sand"
     },
     "4":{
-        "name":"water",
-        "timer":0
+        "name":"stone"
+    },
+    "5":{
+        "name":"water"
+    },
+    "6":{
+        "name":"farmland_0",
+        "cost":{"type":"coin","num":0},
+        "buildable":[0,1],
+        "grow_timer":100,
+        "grow_nextfps":7
+    },
+    "7":{
+        "name":"farmland_1",
+        "cost":{"type":"coin","num":0},
+        "buildable":[6],
+        "grow_timer":100,
+        "grow_nextfps":8
+    },
+    "8":{
+        "name":"farmland_2",
+        "grow_timer":100,
+        "grow_nextfps":9
+    },
+    "9":{
+        "name":"farmland_3",
+        "grow_timer":100,
+        "grow_nextfps":10
+    },
+    "10":{
+        "name":"farmland_4",
+        "grow_timer":100,
+        "grow_nextfps":11
+    },
+    "11":{
+        "name":"farmland_5",
+        "reap":{"type":"food","num":20}
+    },
+    "12":{
+        "name":"building",
+        "cost":{"type":"coin","num":10},
+        "buildable":[0,1]
+    },
+    "13":{
+        "name":"windmill",
+        "cost":{"type":"coin","num":10},
+        "consume":{"type":"food","num":3},
+        "yield":{"type":"coin","num":1},
+        "buildable":[0,1]
     }
 }

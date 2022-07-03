@@ -18,14 +18,12 @@ pygame.mixer.init()
 window_size = (1280,720)
 window = pygame.display.set_mode(window_size) # pygame.RESIZABLE
 window_title = pygame.display.set_caption('TinyLand')
-window_icon = pygame.display.set_icon(pygame.image.load('assets/land/land1.png'))
+window_icon = pygame.display.set_icon(pygame.image.load('assets/tile/tile1.png'))
 window_clock = pygame.time.Clock()
 
 RUN = True
 
-map_01['building'][5][7] = 13
-
-tm = core.tilemap_manager.TilemapManager(map_01,tile_land,tile_building)
+tm = core.tilemap_manager.TilemapManager(map_1,tile)
 
 while RUN == True:
     window.fill((0,0,0,0))
@@ -33,16 +31,16 @@ while RUN == True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             RUN = False
+        if event.type == pygame.MOUSEMOTION:
+            tm.touch(12)
         if event.type == pygame.MOUSEBUTTONDOWN:
             tm.touch(12)
             
-    tilemap_surface = pygame.Surface((320,180)).convert_alpha()
+    tilemap_surface = pygame.Surface((window_size[0]/4,window_size[1]/4)).convert_alpha()
     tilemap_surface.fill((0,0,0,0))
     
-    
     tm.renderer(tilemap_surface)
-    tm.timer()
-    
+    # tm.timer()
     
     tilemap_surface = pygame.transform.scale(tilemap_surface,window_size)
     window.blit(tilemap_surface, (0,0))
