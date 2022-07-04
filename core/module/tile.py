@@ -18,7 +18,7 @@ class Tile:
         self.mask = pygame.image.load('assets/mask/landtile_mask.png').convert_alpha()
         self.mask = pygame.transform.scale(self.mask,((self.width*self.pixal_level),(self.width*self.pixal_level)))
         
-        self.grow_timer_time = 0
+        self.timer_timer = {'grow':0,'animation':0}
         
     def renderer(self,surface):
         self.timer()
@@ -28,16 +28,18 @@ class Tile:
         surface.blit(self.assets[self.code], self.rect)
         
     def timer(self):
-        try:
-            grow_timer = self.tile_data[str(self.code)]['grow_timer']
-            grow_nextfps = self.tile_data[str(self.code)]['grow_nextfps']
-            if grow_timer >= 0:
-                self.grow_timer_time += 1
-            if self.grow_timer_time == grow_timer:
-                self.code = grow_nextfps
-                self.grow_timer_time = 0
-        except:
-            pass
+        for type in self.timer_timer:
+            try:
+                timer = self.tile_data[str(self.code)][type+'_timer']
+                nextfps = self.tile_data[str(self.code)][type+'_nextfps']
+                if timer >= 0:
+                    self.timer_timer[type] += 1
+                if self.timer_timer[type] == timer:
+                    self.code = nextfps
+                    self.timer_timer[type] = 0
+            
+            except:
+                pass
         
     def touch(self):
         if self.pos['y'] == '1':

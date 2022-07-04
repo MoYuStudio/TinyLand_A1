@@ -56,10 +56,21 @@
         "buildable":[0,1]
     },
     "13":{
-        "name":"windmill",
+        "name":"windmill_0",
         "cost":{"type":"coin","num":10},
         "consume":{"type":"food","num":3},
         "yield":{"type":"coin","num":1},
-        "buildable":[0,1]
+        "buildable":[0,1],
+        "animation_timer":30,
+        "animation_nextfps":14
+    },
+    "14":{
+        "name":"windmill_1",
+        "cost":{"type":"coin","num":10},
+        "consume":{"type":"food","num":3},
+        "yield":{"type":"coin","num":1},
+        "buildable":[0,1],
+        "animation_timer":30,
+        "animation_nextfps":13
     }
 }
