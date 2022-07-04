@@ -8,6 +8,8 @@ LocalsVar = locals()
 
 jm = core.json_manager.JsonManager('json',LocalsVar)
 
+tile_list = {}
+
 pygame.init()
 pygame.display.init()
 pygame.font.init()
@@ -23,7 +25,7 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-# tm = core.tilemap_manager.TilemapManager(map_1,tile)
+tm = core.tilemap_manager.TilemapManager(map_1,tile)
 
 while RUN == True:
     window.fill((0,0,0,0))
@@ -33,27 +35,15 @@ while RUN == True:
             RUN = False
         # if event.type == pygame.MOUSEMOTION:
         #     tm.touch(12)
-        # if event.type == pygame.MOUSEBUTTONDOWN:
-        #     tm.touch(12)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # tm.touch(12)
+            for tile in tile_list:
+                tm.tile_list[tile].touch()
             
     tilemap_surface = pygame.Surface((window_size[0]/4,window_size[1]/4)).convert_alpha()
     tilemap_surface.fill((0,0,0,0))
     
-    # tm.renderer(tilemap_surface)
-    # tm.timer()
-    
-    map_loop = map_1
-    
-    for y in map_loop:
-        for x in range(len(map_loop[y])):
-            for z in range(len(map_loop[y][x])):
-                tile_pos = {'x':x,'y':y,'z':z}
-                tile_code = map_loop[y][x][z]
-                # t = core.tile.Tile(tile_pos,tile_code)
-                print(tile_pos['y'])
-                
-                
-    
+    tm.renderer(tilemap_surface)
     
     tilemap_surface = pygame.transform.scale(tilemap_surface,window_size)
     window.blit(tilemap_surface, (0,0))
