@@ -3,6 +3,9 @@ import pygame
 
 class Tile:
     def __init__(self,pos,code,tile_data,pixal_level):
+        '''
+            瓷砖对象
+        '''
         self.pos = pos
         self.code = code
         self.tile_data = tile_data

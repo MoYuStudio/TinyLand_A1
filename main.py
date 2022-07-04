@@ -8,8 +8,6 @@ LocalsVar = locals()
 
 jm = core.json_manager.JsonManager('json',LocalsVar)
 
-tile_list = {}
-
 pygame.init()
 pygame.display.init()
 pygame.font.init()
