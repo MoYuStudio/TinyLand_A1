@@ -36,9 +36,7 @@ while RUN == True:
         # if event.type == pygame.MOUSEMOTION:
         #     tm.touch(12)
         if event.type == pygame.MOUSEBUTTONDOWN:
-            # tm.touch(12)
-            for tile in tile_list:
-                tm.tile_list[tile].touch()
+            tm.touch(6)
             
     tilemap_surface = pygame.Surface((window_size[0]/4,window_size[1]/4)).convert_alpha()
     tilemap_surface.fill((0,0,0,0))

@@ -41,7 +41,7 @@ class Tile:
             except:
                 pass
         
-    def touch(self):
+    def touch(self,change_tile):
         if self.pos['y'] == '1':
             touch_rect = self.rect.copy()
             touch_rect.width *= self.pixal_level
@@ -57,4 +57,4 @@ class Tile:
             if pygame.mouse.get_pressed()[0] == True:
                 if touching == True:
                     if self.code == 0:
-                        self.code = 12
+                        self.code = change_tile

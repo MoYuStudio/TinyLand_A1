@@ -20,3 +20,7 @@ class TilemapManager:
         
         for tile in self.tile_list:
             self.tile_list[tile].renderer(self.surface)
+            
+    def touch(self,change_tile):
+        for tile in self.tile_list:
+            self.tile_list[tile].touch(change_tile)
