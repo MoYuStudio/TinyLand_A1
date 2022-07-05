@@ -1,0 +1,3 @@
+{
+    "game_main":["game_background","game_tilemap","game_ui"]
+}

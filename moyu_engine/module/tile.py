@@ -13,12 +13,12 @@ class Tile:
         
         self.offset = [100,50]
         
-        self.assets = [pygame.image.load('assets/tile/tile'+str(i)+'.png')for i in range(0,(14+1),1)]
+        self.assets = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(14+1),1)]
         
         self.rect = self.assets[self.code].get_rect()
         self.width = self.rect.width
         
-        self.mask = pygame.image.load('assets/mask/landtile_mask.png').convert_alpha()
+        self.mask = pygame.image.load('tinyland/assets/mask/landtile_mask.png').convert_alpha()
         self.mask = pygame.transform.scale(self.mask,((self.width*self.pixal_level),(self.width*self.pixal_level)))
         
         self.timer_timer = {'grow':0,'animation':0}

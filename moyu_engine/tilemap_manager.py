@@ -17,7 +17,6 @@ class TilemapManager:
                 
     def renderer(self,surface):
         self.surface = surface
-        
         for tile in self.tile_list:
             self.tile_list[tile].renderer(self.surface)
             

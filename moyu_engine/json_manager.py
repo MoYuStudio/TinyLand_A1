@@ -26,10 +26,16 @@ class JsonManager:
                 with open(parent+'/'+file_name,'r') as f: # with 打开文件
                     if folder_name == path_folder: # 如果 当前文件夹名 == 指定文件夹名
                         self.write_path[var_name] = parent # 将 变量：文件路径 存入写入字典
-                        self.read_data[var_name] = json.load(f) # 将文件内容加载到 read_data 文件名为 var_name
+                        try:
+                            self.read_data[var_name] = json.load(f) # 将文件内容加载到 read_data 文件名为 var_name
+                        except:
+                            pass
                     else: # 如果 当前文件夹名 != 指定文件夹名
                         self.write_path[folder_name+'_'+var_name] = parent # 将 文件夹名+_+变量：文件路径 存入写入字典
-                        self.read_data[folder_name+'_'+var_name] = json.load(f) # 将文件内容加载到 read_data 文件名为 folder_name+'_'+var_name
+                        try:
+                            self.read_data[folder_name+'_'+var_name] = json.load(f) # 将文件内容加载到 read_data 文件名为 folder_name+'_'+var_name
+                        except:
+                            pass
             
         return self.read_data
 
