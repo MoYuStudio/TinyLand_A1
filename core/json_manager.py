@@ -42,6 +42,6 @@ class JsonManager:
             f.write(dumps_data)
 
 if __name__ == '__main__':
-    jm = JsonManager('json')
+    jm = JsonManager()
     print(jm.read_data)
     print(jm.write_path)

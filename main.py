@@ -6,7 +6,7 @@ import core
 
 LocalsVar = locals()
 
-jm = core.json_manager.JsonManager('json',LocalsVar)
+jm = core.json_manager.JsonManager('data/json')
 
 pygame.init()
 pygame.display.init()
@@ -23,7 +23,7 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-tm = core.tilemap_manager.TilemapManager(map_1,tile)
+tm = core.tilemap_manager.TilemapManager(jm.read_data['map_1'],jm.read_data['tile'])
 
 while RUN == True:
     window.fill((0,0,0,0))
