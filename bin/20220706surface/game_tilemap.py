@@ -3,7 +3,7 @@ import pygame
 
 import moyu_engine
 
-class Tilemap:
+class GameTilemap:
     def __init__(self):
         self.json_manager = moyu_engine.json_manager.JsonManager('tinyland/data/json')
         self.data = self.json_manager.read_data

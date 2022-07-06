@@ -1,8 +1,6 @@
 
 import pygame
 
-import surface
-
 class PageManager:
     def __init__(self):
         pass
