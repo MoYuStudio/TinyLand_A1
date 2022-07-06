@@ -11,8 +11,6 @@ class Tile:
         self.tile_data = tile_data
         self.pixal_level = pixal_level
         
-        self.offset = [100,50]
-        
         self.assets = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(14+1),1)]
         
         self.rect = self.assets[self.code].get_rect()
@@ -22,6 +20,8 @@ class Tile:
         self.mask = pygame.transform.scale(self.mask,((self.width*self.pixal_level),(self.width*self.pixal_level)))
         
         self.timer_timer = {'grow':0,'animation':0}
+        
+        self.offset = [0,0]
         
     def renderer(self,surface):
         self.timer()
@@ -49,7 +49,7 @@ class Tile:
             touch_rect = self.rect.copy()
             touch_rect.width *= self.pixal_level
             touch_rect.height *= self.pixal_level 
-            touch_rect.x *= self.pixal_level
+            touch_rect.x = touch_rect.x*self.pixal_level
             touch_rect.y = touch_rect.y*self.pixal_level + touch_rect.height/2
             
             pos = pygame.mouse.get_pos()

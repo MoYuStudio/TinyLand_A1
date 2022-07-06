@@ -26,17 +26,14 @@ RUN = True
 game_main_page = tinyland.data.page.game_main.GameMain()
     
 while RUN == True:
-            window.fill((0,0,0,0))
-            
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    RUN = False
-                # if event.type == pygame.MOUSEMOTION:
-                #     tm.touch(12)
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    game_main_page.tilemap_manager.touch(6)
-            
-            window.blit(game_main_page.renderer(), (0,0))
-            
-            pygame.display.update()
-            window_clock.tick(60)
+    window.fill((0,0,0,0))
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            RUN = False
+        game_main_page.page_event(event)
+    
+    window.blit(game_main_page.renderer(), (0,0))
+    
+    pygame.display.update()
+    window_clock.tick(60)

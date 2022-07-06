@@ -15,11 +15,13 @@ class TilemapManager:
                     tile_code = self.map[y][x][z]
                     self.tile_list[str(x)+'_'+str(y)+'_'+str(z)] = module.tile.Tile(tile_pos,tile_code,self.tile_data,pixal_level)
                 
-    def renderer(self,surface):
+    def renderer(self,surface,pos_offset=[0,0]):
         self.surface = surface
         for tile in self.tile_list:
+            self.tile_list[tile].offset = pos_offset
             self.tile_list[tile].renderer(self.surface)
             
-    def touch(self,change_tile):
+    def touch(self,change_tile,pos_offset=[0,0]):
         for tile in self.tile_list:
+            self.tile_list[tile].offset = pos_offset
             self.tile_list[tile].touch(change_tile)
