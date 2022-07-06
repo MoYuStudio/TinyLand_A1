@@ -9,10 +9,12 @@ LocalsVar = locals()
 jm = moyu_engine.json_manager.JsonManager('tinyland/data/json')
 config = jm.read_data['config']
 
+music_manager = moyu_engine.music_manager.MusicManager()
+
 pygame.init()
 pygame.display.init()
 pygame.font.init()
-pygame.mixer.init()
+
 
 window = pygame.display.set_mode(config['window']['size']) # pygame.RESIZABLE
 window_title = pygame.display.set_caption('TinyLand')
@@ -24,14 +26,18 @@ RUN = True
 # font_list = [pygame.font.Font('assets/font/LockClock.ttf', size)for size in range(0,(64+1),1)]
 
 game_main_page = tinyland.data.page.game_main.GameMain()
+
+music_manager.play()
     
 while RUN == True:
+    time_delta = window_clock.tick(60)/1000.0
     window.fill((0,0,0,0))
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             RUN = False
         game_main_page.page_event(event)
+        
     
     window.blit(game_main_page.renderer(), (0,0))
     

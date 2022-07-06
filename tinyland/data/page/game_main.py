@@ -14,7 +14,7 @@ class GameMain:
         
         self.window_size = pygame.display.get_surface().get_size()
         
-        self.ui1 = pygame.image.load('tinyland/assets/ui/ui1.png')
+        self.ui1 = pygame.image.load('tinyland/assets/ui/ui0.png')
         self.ui1_ract = self.ui1.get_rect()
         
         self.background1 = pygame.image.load('tinyland/assets/background/background1.png')
