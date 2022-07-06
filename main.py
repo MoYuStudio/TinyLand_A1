@@ -25,7 +25,8 @@ RUN = True
 
 # font_list = [pygame.font.Font('assets/font/LockClock.ttf', size)for size in range(0,(64+1),1)]
 
-game_main_page = tinyland.data.page.game_main.GameMain()
+page = 'game_main_page'
+page_list = {'game_main_page':tinyland.data.page.game_main.GameMain()}
 
 music_manager.play()
     
@@ -36,10 +37,11 @@ while RUN == True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             RUN = False
-        game_main_page.page_event(event)
+        if page == 'game_main_page':
+            page_list['game_main_page'].page_event(event)
         
-    
-    window.blit(game_main_page.renderer(), (0,0))
+    if page == 'game_main_page':
+        window.blit(page_list['game_main_page'].renderer(), (0,0))
     
     pygame.display.update()
     window_clock.tick(60)
