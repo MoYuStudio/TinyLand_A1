@@ -21,7 +21,7 @@ class GameMain:
         self.background1 = pygame.image.load('tinyland/assets/background/background1.png')
         self.background1_ract = self.background1.get_rect()
         
-        self.tilemap_offset = [self.window_size[0]/4/2,self.window_size[1]/4/2]
+        self.tilemap_offset = [self.window_size[0]/self.pixal_level/2,self.window_size[1]/self.pixal_level/2]
         
         self.move_up = False
         self.move_down = False
