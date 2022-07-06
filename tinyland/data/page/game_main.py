@@ -21,7 +21,7 @@ class GameMain:
         self.background1 = pygame.image.load('tinyland/assets/background/background1.png')
         self.background1_ract = self.background1.get_rect()
         
-        self.tilemap_offset = [0,0]
+        self.tilemap_offset = [self.window_size[0]/4/2,self.window_size[1]/4/2]
         
         self.move_up = False
         self.move_down = False
@@ -57,17 +57,17 @@ class GameMain:
 
         if self.move_up == True:
             self.tilemap_offset[1] -= 1
-        elif self.move_down == True:
+        if self.move_down == True:
             self.tilemap_offset[1] += 1
-        elif self.move_left == True:
+        if self.move_left == True:
             self.tilemap_offset[0] -= 1
-        elif self.move_right == True:
+        if self.move_right == True:
             self.tilemap_offset[0] += 1
         
         page = pygame.Surface((self.window_size[0],self.window_size[1])).convert_alpha()
         page.fill((0,0,0,0))
 
-        page.blit(self.background(),(-self.background1_ract.width/2-self.tilemap_offset[0],-self.background1_ract.height/2-self.tilemap_offset[1]))
+        page.blit(self.background(),(-self.background1_ract.width/2-self.tilemap_offset[0]*4,-self.background1_ract.height/2-self.tilemap_offset[1]*4))
         page.blit(self.tilemap(),(0,0))
         page.blit(self.ui(),(0,0))
         
