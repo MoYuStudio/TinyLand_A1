@@ -1,5 +1,4 @@
 
-from matplotlib.pyplot import cla
 import pygame
 
 import moyu_engine
