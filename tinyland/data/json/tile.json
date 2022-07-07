@@ -61,7 +61,7 @@
         "consume":{"type":"food","num":3},
         "yield":{"type":"coin","num":1},
         "buildable":[0,1],
-        "animation_timer":30,
+        "animation_timer":10,
         "animation_nextfps":14
     },
     "14":{
@@ -70,7 +70,7 @@
         "consume":{"type":"food","num":3},
         "yield":{"type":"coin","num":1},
         "buildable":[0,1],
-        "animation_timer":30,
+        "animation_timer":10,
         "animation_nextfps":13
     }
 }

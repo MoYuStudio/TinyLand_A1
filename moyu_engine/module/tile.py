@@ -11,7 +11,7 @@ class Tile:
         self.tile_data = tile_data
         self.pixal_level = pixal_level
         
-        self.assets = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(14+1),1)]
+        self.assets = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(15+1),1)]
         
         self.rect = self.assets[self.code].get_rect()
         self.width = self.rect.width

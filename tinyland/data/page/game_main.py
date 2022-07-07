@@ -14,10 +14,10 @@ class GameMain:
         
         self.window_size = pygame.display.get_surface().get_size()
         
-        self.tile_assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(14+1),1)]
-        self.tile_assets = [pygame.transform.scale(self.tile_assets_small[i],(64, 64))for i in range(0,(14+1),1)]
+        self.tile_assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(15+1),1)]
+        self.tile_assets = [pygame.transform.scale(self.tile_assets_small[i],(64, 64))for i in range(0,(15+1),1)]
         
-        self.background1 = pygame.image.load('tinyland/assets/background/background1.png')
+        self.background1 = pygame.image.load('tinyland/assets/background/background3.png')
         self.background1_ract = self.background1.get_rect()
         
         self.tilemap_offset = [self.window_size[0]/self.pixal_level/2,self.window_size[1]/self.pixal_level/2]
@@ -29,7 +29,7 @@ class GameMain:
         
         self.text_button = moyu_engine.module.ui.UI()
         self.image_button_list = {}
-        for i in range(0,14,1):
+        for i in range(0,16,1):
             self.image_button_list['tile'+str(i)] = moyu_engine.module.ui.UI()
         
         self.tile_pick_menu_active = False
@@ -39,7 +39,7 @@ class GameMain:
     def background(self):
         surface = pygame.Surface((self.background1_ract.width,self.background1_ract.height)).convert_alpha()
         surface.fill((0,0,0,0))
-        surface.blit(self.background1,(0,0))
+        surface.blit(self.background1,(-self.tilemap_offset[0],-self.tilemap_offset[1]))
         surface = pygame.transform.scale(surface,(self.background1_ract.width*self.pixal_level, self.background1_ract.height*self.pixal_level))
         
         return surface
@@ -71,8 +71,16 @@ class GameMain:
         
         surface = pygame.transform.scale(surface,(self.window_size[0], self.window_size[1]))
         
-        for i in range(0,14,1):
-            self.image_button_list['tile'+str(i)].image_button_renderer(surface,self.tile_assets[i],pos=[i*64,100])
+        x,y = 0,0
+        for i in range(0,16,1):
+            self.image_button_list['tile'+str(i)].image_button_renderer(surface,self.tile_assets[i],pos=[100+x*(64+64),100+y*(64+32)])
+            if x == 7:
+                x = 0
+            x+=1
+            y=i//7
+            
+            
+            
             
             # surface.blit(self.tile_assets[i],(i*16,100))
                 
@@ -95,7 +103,7 @@ class GameMain:
         page = pygame.Surface((self.window_size[0],self.window_size[1])).convert_alpha()
         page.fill((0,0,0,0))
         
-        page.blit(self.background(),(-self.background1_ract.width/2-self.tilemap_offset[0]*4,-self.background1_ract.height/2-self.tilemap_offset[1]*4))
+        page.blit(self.background(),(0,0))
         page.blit(self.tilemap(),(0,0))
         page.blit(self.ui(),(0,0))
         
@@ -118,7 +126,6 @@ class GameMain:
                 self.tilemap_manager.touch(self.tile_pick, self.tilemap_offset)
                 
                 if self.text_button.touch() == True:
-                    print('menu')
                     self.tile_pick_menu_active = True
                 
             if self.event.type == pygame.KEYDOWN:
@@ -144,9 +151,8 @@ class GameMain:
         if self.tile_pick_menu_active == True:
             if self.event.type == pygame.MOUSEBUTTONDOWN:
                 try:
-                    for i in range(0,14,1):
+                    for i in range(0,16,1):
                         if self.image_button_list['tile'+str(i)].touch() == True:
-                            print('tile'+str(i))
                             self.tile_pick = i
                 except:
                     pass
