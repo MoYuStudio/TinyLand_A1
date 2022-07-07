@@ -23,8 +23,6 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-# font_list = [pygame.font.Font('assets/font/LockClock.ttf', size)for size in range(0,(64+1),1)]
-
 page = 'game_main_page'
 page_list = {'game_main_page':tinyland.data.page.game_main.GameMain()}
 
