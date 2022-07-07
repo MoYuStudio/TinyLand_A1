@@ -73,11 +73,11 @@ class GameMain:
         
         x,y = 0,0
         for i in range(0,16,1):
-            self.image_button_list['tile'+str(i)].image_button_renderer(surface,self.tile_assets[i],pos=[100+x*(64+64),100+y*(64+32)])
-            if x == 7:
+            self.image_button_list['tile'+str(i)].image_button_renderer(surface,self.tile_assets[i],pos=[100+x*(64+32),100+y*(64+32)])
+            if x == 9:
                 x = 0
             x+=1
-            y=i//7
+            y=i//9
             
             
             
