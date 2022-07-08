@@ -1,4 +1,7 @@
 
+import sys
+sys.dont_write_bytecode = True
+
 import pygame
 
 import moyu_engine
