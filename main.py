@@ -26,12 +26,19 @@ window_clock = pygame.time.Clock()
 
 RUN = True
 
-page = 'game_main_page'
-page_list = {'game_main_page':tinyland.data.page.game_main.GameMain()}
+page = 'menu_main_page'
+page_list = {
+    'game_main_page':tinyland.data.page.game_main.GameMain(),
+    'menu_main_page':tinyland.data.page.menu_main.MenuMain(),
+            }
 
 music_manager.play()
     
 while RUN == True:
+    
+    if page_list['menu_main_page'].page_switch() != None:
+        page = page_list['menu_main_page'].page_switch()
+    
     time_delta = window_clock.tick(60)/1000.0
     window.fill((0,0,0,0))
     
@@ -40,9 +47,13 @@ while RUN == True:
             RUN = False
         if page == 'game_main_page':
             page_list['game_main_page'].page_event(event)
+        if page == 'menu_main_page':
+            page_list['menu_main_page'].page_event(event)
         
     if page == 'game_main_page':
         window.blit(page_list['game_main_page'].renderer(), (0,0))
+    if page == 'menu_main_page':
+        window.blit(page_list['menu_main_page'].renderer(), (0,0))
     
     pygame.display.update()
     window_clock.tick(60)
