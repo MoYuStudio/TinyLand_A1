@@ -2,6 +2,7 @@
 import pygame
 
 import moyu_engine
+import moyu_engine.module
 
 class GameMain:
     def __init__(self):
@@ -12,10 +13,12 @@ class GameMain:
         
         self.tilemap_manager = moyu_engine.tilemap_manager.TilemapManager(self.data['map_1'],self.data['tile'],self.pixal_level)
         
+        self.tile_num = moyu_engine.module.assets.Assets('tinyland/assets/tile').one_folder()
+        
         self.window_size = pygame.display.get_surface().get_size()
         
-        self.tile_assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(15+1),1)]
-        self.tile_assets = [pygame.transform.scale(self.tile_assets_small[i],(16*self.pixal_level, 16*self.pixal_level))for i in range(0,(15+1),1)]
+        self.tile_assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(self.tile_num),1)]
+        self.tile_assets = [pygame.transform.scale(self.tile_assets_small[i],(16*self.pixal_level, 16*self.pixal_level))for i in range(0,(self.tile_num),1)]
         
         self.background1 = pygame.image.load('tinyland/assets/background/background3.png')
         self.background1_ract = self.background1.get_rect()
@@ -29,7 +32,7 @@ class GameMain:
         
         self.text_button = moyu_engine.module.ui.UI()
         self.image_button_list = {}
-        for i in range(0,16,1):
+        for i in range(0,self.tile_num,1):
             self.image_button_list['tile'+str(i)] = moyu_engine.module.ui.UI()
         
         self.tile_pick_menu_active = False
@@ -72,7 +75,7 @@ class GameMain:
         surface = pygame.transform.scale(surface,(self.window_size[0], self.window_size[1]))
         
         x,y = 0,0
-        for i in range(0,16,1):
+        for i in range(0,self.tile_num,1):
             self.image_button_list['tile'+str(i)].image_button_renderer(surface,self.tile_assets[i],pos=[100+x*(64+32),100+y*(64+32)])
             if x == 9:
                 x = 0
@@ -145,7 +148,7 @@ class GameMain:
         if self.tile_pick_menu_active == True:
             if self.event.type == pygame.MOUSEBUTTONDOWN:
                 try:
-                    for i in range(0,16,1):
+                    for i in range(0,self.tile_num,1):
                         if self.image_button_list['tile'+str(i)].touch() == True:
                             self.tile_pick = i
                 except:

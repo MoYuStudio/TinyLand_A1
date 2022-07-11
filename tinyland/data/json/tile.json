@@ -48,7 +48,9 @@
     },
     "11":{
         "name":"farmland_5",
-        "reap":{"type":"food","num":20}
+        "reap":{"type":"food","num":20},
+        "animation_timer":10,
+        "animation_nextfps":17
     },
     "12":{
         "name":"building",
@@ -72,5 +74,11 @@
         "buildable":[0,1],
         "animation_timer":10,
         "animation_nextfps":13
+    },
+    "17":{
+        "name":"farmland_5a",
+        "reap":{"type":"food","num":20},
+        "animation_timer":10,
+        "animation_nextfps":11
     }
 }

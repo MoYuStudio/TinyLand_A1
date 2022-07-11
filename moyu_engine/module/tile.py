@@ -1,4 +1,6 @@
 
+import os
+import glob
 import pygame
 
 class Tile:
@@ -11,8 +13,13 @@ class Tile:
         self.tile_data = tile_data
         self.pixal_level = pixal_level
         
-        self.assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(15+1),1)]
-        self.assets = [pygame.transform.scale(self.assets_small[i],(16*self.pixal_level, 16*self.pixal_level))for i in range(0,(15+1),1)]
+        num = []
+        for filename in glob.glob(r'tinyland/assets/tile/*.png'):
+            num.append(filename)
+        self.tile_num = len(num)
+        
+        self.assets_small = [pygame.image.load('tinyland/assets/tile/tile'+str(i)+'.png')for i in range(0,(self.tile_num),1)]
+        self.assets = [pygame.transform.scale(self.assets_small[i],(16*self.pixal_level, 16*self.pixal_level))for i in range(0,(self.tile_num),1)]
         
         self.rect = self.assets[self.code].get_rect()
         self.width = self.rect.width
